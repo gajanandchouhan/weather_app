@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="weatherData"
+            type="com.gc.weatherapp.data.CurrentWeatherResponse" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:clickable="true"
+        android:focusable="true">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvErrorMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{weatherData.message}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_18sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RelativeLayout
+            android:id="@+id/layoutWeatherInfo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+
+                android:id="@+id/tvCityName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:padding="@dimen/_10dp"
+                android:text="@{weatherData.name}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_18sp" />
+
+            <TextView
+                android:id="@+id/tvTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvCityName"
+                android:layout_marginStart="@dimen/_10dp"
+                android:text="@{@string/degree_celcius(weatherData.main.feels_like)}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_30sp" />
+
+            <TextView
+                android:id="@+id/tvWeatherMain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvTemp"
+                android:layout_marginStart="@dimen/_10dp"
+                android:text="@{weatherData.weather[0].main}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvHumidty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvWeatherMain"
+                android:layout_marginStart="@dimen/_10dp"
+                android:layout_marginTop="@dimen/_40dp"
+                android:text="@{@string/humidity(weatherData.main.humidity)}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sp" />
+
+            <TextView
+                android:id="@+id/tvWind"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvHumidty"
+                android:layout_marginStart="@dimen/_10dp"
+                android:text="@{@string/wind(weatherData.wind.speed)}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sp" />
+
+            <TextView
+                android:id="@+id/tvToday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvWind"
+                android:layout_marginStart="@dimen/_10dp"
+                android:text="@{@string/today_temp(weatherData.main.temp_min,weatherData.main.temp_max)}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sp" />
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

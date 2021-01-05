@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">WeatherApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="degree_celcius">%.2f°C</string>
+    <string name="humidity">Humidity: %d\%%</string>
+    <string name="wind">Wind: %.2f km/h</string>
+    <string name="today_temp">Today: %1.2f°C |  %2.2f°C</string>
+    <string name="no_internet">No internet connection</string>
+    <string name="unknown_error">Something went wrong</string>
+    <string name="city_not_fund">City not found</string>
+</resources>
